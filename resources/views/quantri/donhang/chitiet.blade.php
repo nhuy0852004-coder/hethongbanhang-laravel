@@ -229,7 +229,7 @@
                 </div>
 
                 <div class="text-muted small mt-3">
-                    Đơn hàng tạo lúc {{ $donhang->created_at->format('H:i d/m/Y') }}
+                    Đơn hàng tạo lúc {{ dinh_dang_ngay_gio($donhang->created_at) }}
                 </div>
             </div>
         </div>

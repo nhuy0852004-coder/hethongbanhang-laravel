@@ -130,11 +130,11 @@
 
                                 <td>
                                     <div class="fw-semibold">
-                                        {{ $donhang->created_at->format('d/m/Y') }}
+                                        {{ dinh_dang_ngay($donhang->created_at) }}
                                     </div>
 
                                     <div class="text-muted small">
-                                        {{ $donhang->created_at->format('H:i') }}
+                                        {{ dinh_dang_gio($donhang->created_at) }}
                                     </div>
                                 </td>
 

@@ -21,6 +21,45 @@ if (! function_exists('dem_gio_hang')) {
     }
 }
 
+if (! function_exists('dinh_dang_ngay_gio')) {
+    function dinh_dang_ngay_gio($thoiGian): string
+    {
+        if (! $thoiGian) {
+            return '';
+        }
+
+        return \Carbon\Carbon::parse($thoiGian)
+            ->timezone('Asia/Ho_Chi_Minh')
+            ->format('d/m/Y H:i');
+    }
+}
+
+if (! function_exists('dinh_dang_ngay')) {
+    function dinh_dang_ngay($thoiGian): string
+    {
+        if (! $thoiGian) {
+            return '';
+        }
+
+        return \Carbon\Carbon::parse($thoiGian)
+            ->timezone('Asia/Ho_Chi_Minh')
+            ->format('d/m/Y');
+    }
+}
+
+if (! function_exists('dinh_dang_gio')) {
+    function dinh_dang_gio($thoiGian): string
+    {
+        if (! $thoiGian) {
+            return '';
+        }
+
+        return \Carbon\Carbon::parse($thoiGian)
+            ->timezone('Asia/Ho_Chi_Minh')
+            ->format('H:i');
+    }
+}
+
 if (! function_exists('ten_trang_thai_don_hang')) {
     function ten_trang_thai_don_hang(string $trangThai): string
     {
