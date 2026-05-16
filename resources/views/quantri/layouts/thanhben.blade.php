@@ -22,12 +22,13 @@
         </a>
 
         <a href="{{ route('quantri.sanpham.index') }}"
-            class="quantri-menu-link {{ request()->routeIs('quantri.sanpham.*') ? 'active' : '' }}">
-                <i class="bi bi-box-seam"></i>
-                <span>Sản phẩm</span>
+           class="quantri-menu-link {{ request()->routeIs('quantri.sanpham.*') ? 'active' : '' }}">
+            <i class="bi bi-box-seam"></i>
+            <span>Sản phẩm</span>
         </a>
 
-        <a href="#" class="quantri-menu-link">
+        <a href="{{ route('quantri.donhang.index') }}"
+           class="quantri-menu-link {{ request()->routeIs('quantri.donhang.*') ? 'active' : '' }}">
             <i class="bi bi-receipt"></i>
             <span>Đơn hàng</span>
         </a>

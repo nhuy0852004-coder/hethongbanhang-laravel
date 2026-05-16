@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Quantri\BangdieukhienController;
 use App\Http\Controllers\Quantri\DanhmucController;
 use App\Http\Controllers\Quantri\SanphamController;
+use App\Http\Controllers\Quantri\DonhangController;
 use App\Http\Controllers\Xacthuc\DangnhapController;
 use App\Http\Controllers\Cuahang\TrangchuController as CuahangTrangchuController;
 use App\Http\Controllers\Cuahang\SanphamController as CuahangSanphamController;
@@ -67,4 +68,10 @@ Route::prefix('quantri')
         ]);
         Route::patch('sanpham/{sanpham}/doi-trang-thai', [SanphamController::class, 'doiTrangThai'])
             ->name('sanpham.doi-trang-thai');
+
+        Route::resource('donhang', DonhangController::class)->only([
+            'index',
+            'show',
+            'update',
+        ]);
     });

@@ -5,35 +5,49 @@ namespace App\Repositories;
 use App\Models\Chitietdonhang;
 use App\Models\Donhang;
 use App\Models\Khachhang;
-use Illuminate\Support\Facades\Schema;
 
 class DonhangRepository
 {
+    public function layDanhSach(array $boLoc)
+    {
+        return Donhang::query()
+            ->with('khachhang')
+            ->when(!empty($boLoc['tu_khoa']), function ($query) use ($boLoc) {
+                $query->where(function ($truyVan) use ($boLoc) {
+                    $truyVan->where('ma_don_hang', 'like', '%' . $boLoc['tu_khoa'] . '%')
+                        ->orWhere('ho_ten_nguoi_nhan', 'like', '%' . $boLoc['tu_khoa'] . '%')
+                        ->orWhere('so_dien_thoai', 'like', '%' . $boLoc['tu_khoa'] . '%')
+                        ->orWhere('email', 'like', '%' . $boLoc['tu_khoa'] . '%');
+                });
+            })
+            ->when(!empty($boLoc['trang_thai']), function ($query) use ($boLoc) {
+                $query->where('trang_thai', $boLoc['trang_thai']);
+            })
+            ->when(!empty($boLoc['tu_ngay']), function ($query) use ($boLoc) {
+                $query->whereDate('created_at', '>=', $boLoc['tu_ngay']);
+            })
+            ->when(!empty($boLoc['den_ngay']), function ($query) use ($boLoc) {
+                $query->whereDate('created_at', '<=', $boLoc['den_ngay']);
+            })
+            ->orderByDesc('id')
+            ->paginate(12)
+            ->withQueryString();
+    }
+
     public function taoHoacCapNhatKhachhang(array $duLieu): Khachhang
     {
-        $thongTin = [
-            'ho_ten' => $duLieu['ho_ten_nguoi_nhan'],
-            'email' => $duLieu['email'] ?? null,
-            'dia_chi' => $duLieu['dia_chi'],
-        ];
-
-        if (Schema::hasColumn('khachhang', 'tinh_thanh')) {
-            $thongTin['tinh_thanh'] = $duLieu['tinh_thanh'] ?? null;
-        }
-
-        if (Schema::hasColumn('khachhang', 'quan_huyen')) {
-            $thongTin['quan_huyen'] = $duLieu['quan_huyen'] ?? null;
-        }
-
-        if (Schema::hasColumn('khachhang', 'phuong_xa')) {
-            $thongTin['phuong_xa'] = $duLieu['phuong_xa'] ?? null;
-        }
-
         return Khachhang::updateOrCreate(
             [
                 'so_dien_thoai' => $duLieu['so_dien_thoai'],
             ],
-            $thongTin
+            [
+                'ho_ten' => $duLieu['ho_ten_nguoi_nhan'],
+                'email' => $duLieu['email'] ?? null,
+                'dia_chi' => $duLieu['dia_chi'],
+                'tinh_thanh' => $duLieu['tinh_thanh'] ?? null,
+                'quan_huyen' => $duLieu['quan_huyen'] ?? null,
+                'phuong_xa' => $duLieu['phuong_xa'] ?? null,
+            ]
         );
     }
 
@@ -45,6 +59,11 @@ class DonhangRepository
     public function taoChitietDonhang(array $duLieu): Chitietdonhang
     {
         return Chitietdonhang::create($duLieu);
+    }
+
+    public function capnhat(Donhang $donhang, array $duLieu): bool
+    {
+        return $donhang->update($duLieu);
     }
 
     public function tonTaiMaDonHang(string $maDonHang): bool

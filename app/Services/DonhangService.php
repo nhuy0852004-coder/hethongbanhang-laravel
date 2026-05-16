@@ -15,6 +15,11 @@ class DonhangService
     ) {
     }
 
+    public function layDanhSach(array $boLoc)
+    {
+        return $this->donhangRepository->layDanhSach($boLoc);
+    }
+
     public function taoTuGioHang(array $duLieu, GiohangService $giohangService): Donhang
     {
         $gioHang = $giohangService->layDanhSach();
@@ -109,6 +114,23 @@ class DonhangService
             }
 
             return $donhang;
+        });
+    }
+
+    public function capnhatTrangThai(Donhang $donhang, string $trangThaiMoi): bool
+    {
+        return DB::transaction(function () use ($donhang, $trangThaiMoi) {
+            if ($donhang->trang_thai === 'hoan_thanh' && $trangThaiMoi === 'da_huy') {
+                throw new RuntimeException('Không thể hủy đơn hàng đã hoàn thành.');
+            }
+
+            if ($donhang->trang_thai === 'da_huy' && $trangThaiMoi !== 'da_huy') {
+                throw new RuntimeException('Không thể khôi phục đơn hàng đã hủy trong phiên bản hiện tại.');
+            }
+
+            return $this->donhangRepository->capnhat($donhang, [
+                'trang_thai' => $trangThaiMoi,
+            ]);
         });
     }
 
