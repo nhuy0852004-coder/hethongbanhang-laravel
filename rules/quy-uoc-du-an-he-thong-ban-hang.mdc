@@ -1,0 +1,67 @@
+---
+description: Quy ước bắt buộc cho dự án hệ thống bán hàng Laravel
+alwaysApply: true
+---
+
+# Quy ước dự án hệ thống bán hàng
+
+## Stack chốt
+- Laravel 12
+- Blade Template
+- MySQL với XAMPP
+- Bootstrap 5
+- Alpine.js
+- Laravel Reverb + Laravel Echo cho realtime
+- Queue dùng `database`
+- Notification dùng `database` + `broadcast`
+- Icon: Bootstrap Icons hoặc Tabler Icons
+
+## Quy tắc bắt buộc
+- Luôn ưu tiên viết code theo `Service + Repository`.
+- `Controller` chỉ nhận request, gọi `Service`, trả view hoặc redirect.
+- Luôn đặt tên tiếng Việt không dấu theo quy ước của dự án.
+- Không dùng các tên tiếng Anh bị cấm: `product`, `category`, `order`, `customer`, `notification`, `setting`, `report`.
+- Ưu tiên các tên: `sanpham`, `danhmuc`, `donhang`, `khachhang`, `thongbao`, `baocao`, `caidat`, `doanhthu`, `phieunhap`, `nhacungcap`.
+
+## Cấu trúc và tổ chức code
+- Controller theo khu vực: `Quantri` và `Website`.
+- Request đặt tên theo hành động: `Luu...Request`, `Capnhat...Request`.
+- Model, Service, Repository, Event, Notification đều phải theo tên tiếng Việt không dấu.
+- View tách rõ `quantri`, `website`, `components`.
+- Route phải tách admin và website rõ ràng.
+
+## Database và dữ liệu
+- Dùng cột, bảng, trạng thái theo chuẩn đã thống nhất của dự án.
+- Giá tiền lưu kiểu số trong database, hiển thị bằng helper `dinh_dang_tien()`.
+- Validation phải dùng thông báo tiếng Việt, rõ ràng, dễ hiểu.
+
+## Realtime và thông báo
+- Realtime ưu tiên cho đơn hàng và thông báo.
+- Dùng event + notification + broadcast đúng chuẩn Laravel.
+- Không bỏ qua queue khi phát broadcast notification.
+
+## UI/UX
+- Giao diện admin phải sạch, rõ ràng, ưu tiên dễ đọc hơn trang trí.
+- Dùng màu sáng, card trắng, border mảnh, badge trạng thái rõ ràng.
+- Modal, table, button, input phải giữ kích thước gọn và đồng nhất.
+
+## Trình tự làm việc bắt buộc cho mỗi module
+1. Migration
+2. Model
+3. Seeder nếu cần
+4. Repository
+5. Service
+6. Request Validation
+7. Controller
+8. Route
+9. Blade View
+10. Component dùng lại
+11. JavaScript xử lý UI
+12. Toast / Loading / Empty state
+13. Realtime nếu cần
+14. Test thủ công
+
+## Khi làm việc với code
+- Luôn kiểm tra quy ước này trước khi tạo hoặc sửa file liên quan.
+- Nếu yêu cầu mới mâu thuẫn với quy ước này, phải báo lại và đề xuất cách làm phù hợp.
+- Khi sinh tên file, tên class, tên route, tên biến, phải ưu tiên tiếng Việt không dấu và nhất quán toàn hệ thống.

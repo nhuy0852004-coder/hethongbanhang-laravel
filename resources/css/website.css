@@ -1,0 +1,88 @@
+.website-body {
+    background: #FFFFFF;
+    color: #111827;
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+.website-header {
+    height: 72px;
+    border-bottom: 1px solid #E5E7EB;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+}
+
+.website-logo {
+    color: #2563EB;
+    font-size: 22px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.website-nav a {
+    color: #374151;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 24px;
+}
+
+.website-nav a:hover {
+    color: #2563EB;
+}
+
+.website-hero {
+    background: #F8FAFC;
+    border-radius: 18px;
+    padding: 56px;
+    border: 1px solid #E5E7EB;
+}
+
+.website-hero h1 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.website-hero p {
+    font-size: 16px;
+    color: #6B7280;
+    max-width: 560px;
+}
+
+.the-sanpham {
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    background: #FFFFFF;
+    overflow: hidden;
+    transition: 0.15s ease;
+}
+
+.the-sanpham:hover {
+    border-color: #CBD5E1;
+}
+
+.the-sanpham-img {
+    height: 220px;
+    background: #F3F4F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9CA3AF;
+}
+
+.the-sanpham-body {
+    padding: 14px;
+}
+
+.the-sanpham-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+.the-sanpham-price {
+    color: #DC2626;
+    font-weight: 800;
+    font-size: 16px;
+}

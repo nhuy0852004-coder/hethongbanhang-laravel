@@ -1,0 +1,250 @@
+:root {
+    --nen-chinh: #F8FAFC;
+    --nen-the: #FFFFFF;
+    --mau-chinh: #2563EB;
+    --mau-chinh-dam: #1D4ED8;
+    --chu-chinh: #111827;
+    --chu-phu: #6B7280;
+    --vien: #E5E7EB;
+    --xanh-la: #16A34A;
+    --vang: #D97706;
+    --do: #DC2626;
+    --xam: #64748B;
+}
+
+body {
+    background: var(--nen-chinh);
+    color: var(--chu-chinh);
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+}
+
+.quantri-wrapper {
+    min-height: 100vh;
+    display: flex;
+    background: var(--nen-chinh);
+}
+
+.quantri-sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background: #ffffff;
+    border-right: 1px solid var(--vien);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1030;
+}
+
+.quantri-logo {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--vien);
+    font-weight: 700;
+    color: var(--mau-chinh);
+    font-size: 18px;
+}
+
+.quantri-menu {
+    padding: 16px 12px;
+}
+
+.quantri-menu-title {
+    font-size: 12px;
+    color: var(--chu-phu);
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 12px 12px 8px;
+}
+
+.quantri-menu-link {
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #374151;
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.quantri-menu-link i {
+    font-size: 18px;
+    color: #6B7280;
+}
+
+.quantri-menu-link:hover {
+    background: #F3F4F6;
+    color: var(--chu-chinh);
+}
+
+.quantri-menu-link.active {
+    background: #EFF6FF;
+    color: var(--mau-chinh);
+}
+
+.quantri-menu-link.active i {
+    color: var(--mau-chinh);
+}
+
+.quantri-main {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    min-height: 100vh;
+}
+
+.quantri-header {
+    height: 64px;
+    background: #ffffff;
+    border-bottom: 1px solid var(--vien);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+.quantri-search {
+    width: 360px;
+    position: relative;
+}
+
+.quantri-search input {
+    height: 40px;
+    border: 1px solid var(--vien);
+    border-radius: 8px;
+    padding-left: 38px;
+    font-size: 14px;
+}
+
+.quantri-search i {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    color: var(--chu-phu);
+}
+
+.quantri-content {
+    padding: 24px;
+}
+
+.trang-tieude {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.trang-tieude h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.trang-tieude p {
+    margin: 4px 0 0;
+    color: var(--chu-phu);
+}
+
+.the-thongke {
+    background: var(--nen-the);
+    border: 1px solid var(--vien);
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.the-thongke-label {
+    color: var(--chu-phu);
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.the-thongke-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--chu-chinh);
+}
+
+.the-thongke-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: #EFF6FF;
+    color: var(--mau-chinh);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.khoi-noidung {
+    background: var(--nen-the);
+    border: 1px solid var(--vien);
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.khoi-noidung-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.btn-chinh {
+    background: var(--mau-chinh);
+    border-color: var(--mau-chinh);
+    color: #fff;
+    border-radius: 8px;
+    height: 38px;
+    padding: 0 14px;
+    font-weight: 600;
+}
+
+.btn-chinh:hover {
+    background: var(--mau-chinh-dam);
+    border-color: var(--mau-chinh-dam);
+    color: #fff;
+}
+
+.badge-trangthai {
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.badge-cho-xac-nhan {
+    background: #FEF3C7;
+    color: #92400E;
+}
+
+.badge-hoan-thanh {
+    background: #DCFCE7;
+    color: #166534;
+}
+
+.badge-da-huy {
+    background: #FEE2E2;
+    color: #991B1B;
+}
+
+@media (max-width: 992px) {
+    .quantri-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .quantri-main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .quantri-search {
+        width: 220px;
+    }
+}
