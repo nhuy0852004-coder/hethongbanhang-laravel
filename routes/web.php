@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Quantri\BangdieukhienController;
+use App\Http\Controllers\Quantri\DanhmucController;
 use App\Http\Controllers\Website\TrangchuController;
 use App\Http\Controllers\Xacthuc\DangnhapController;
 
@@ -19,4 +20,8 @@ Route::prefix('quantri')
     ->middleware(['kiemtraquantri'])
     ->group(function () {
         Route::get('/', [BangdieukhienController::class, 'index'])->name('bangdieukhien');
+
+        Route::resource('danhmuc', DanhmucController::class);
+        Route::patch('danhmuc/{danhmuc}/doi-trang-thai', [DanhmucController::class, 'doiTrangThai'])
+            ->name('danhmuc.doi-trang-thai');
     });

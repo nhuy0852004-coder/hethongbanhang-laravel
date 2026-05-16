@@ -9,10 +9,10 @@
             <p>Tổng quan hoạt động bán hàng hôm nay</p>
         </div>
 
-        <button class="btn btn-chinh">
+        <!-- <button class="btn btn-chinh">
             <i class="bi bi-plus-lg me-1"></i>
             Tạo đơn hàng
-        </button>
+        </button> -->
     </div>
 
     <div class="row g-3 mb-4">

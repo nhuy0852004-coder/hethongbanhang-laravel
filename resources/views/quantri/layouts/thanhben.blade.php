@@ -7,14 +7,16 @@
     <nav class="quantri-menu">
         <div class="quantri-menu-title">Tổng quan</div>
 
-        <a href="{{ route('quantri.bangdieukhien') }}" class="quantri-menu-link active">
+        <a href="{{ route('quantri.bangdieukhien') }}"
+           class="quantri-menu-link {{ request()->routeIs('quantri.bangdieukhien') ? 'active' : '' }}">
             <i class="bi bi-speedometer2"></i>
             <span>Bảng điều khiển</span>
         </a>
 
         <div class="quantri-menu-title">Quản lý bán hàng</div>
 
-        <a href="#" class="quantri-menu-link">
+        <a href="{{ route('quantri.danhmuc.index') }}"
+           class="quantri-menu-link {{ request()->routeIs('quantri.danhmuc.*') ? 'active' : '' }}">
             <i class="bi bi-grid"></i>
             <span>Danh mục</span>
         </a>
