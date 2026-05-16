@@ -26,4 +26,9 @@ class Sanpham extends Model
     {
         return $this->belongsTo(Danhmuc::class, 'danhmuc_id');
     }
+
+    public function getGiaHienThiAttribute(): int
+    {
+        return $this->gia_khuyen_mai ?: $this->gia_ban;
+    }
 }

@@ -21,5 +21,7 @@
     </div>
 
     @include('components.thongbaotoast')
+    
+    @stack('scripts')
 </body>
 </html>
