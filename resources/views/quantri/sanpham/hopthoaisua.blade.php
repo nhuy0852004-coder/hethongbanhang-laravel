@@ -30,15 +30,33 @@
                             @endif
                         </div>
 
-                        <input type="file"
-                               name="anh_dai_dien"
-                               accept="image/png,image/jpeg,image/jpg,image/webp"
-                               class="form-control input-anh-sanpham @error('anh_dai_dien') is-invalid @enderror"
-                               data-preview="xemTruocAnhSanpham{{ $sanpham->id }}">
+                        <div class="nhom-upload-file">
+                            <input type="file"
+                                   id="anh_dai_dien_sua_{{ $sanpham->id }}"
+                                   name="anh_dai_dien"
+                                   accept="image/png,image/jpeg,image/jpg,image/webp"
+                                   class="input-file-an input-anh-sanpham @error('anh_dai_dien') is-invalid @enderror"
+                                   data-preview="xemTruocAnhSanpham{{ $sanpham->id }}">
 
-                        @error('anh_dai_dien')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                            <label for="anh_dai_dien_sua_{{ $sanpham->id }}" class="nut-upload-file">
+                                <span class="upload-file-left">
+                                    <span class="upload-file-icon">
+                                        <i class="bi bi-cloud-arrow-up"></i>
+                                    </span>
+
+                                    <span>
+                                        <span class="upload-file-title">Thay ảnh sản phẩm</span>
+                                        <span class="upload-file-name ten-file-upload">Chưa chọn ảnh mới</span>
+                                    </span>
+                                </span>
+
+                                <span class="upload-file-action">Chọn ảnh</span>
+                            </label>
+
+                            @error('anh_dai_dien')
+                                <div class="text-danger small mt-2">{{ $message }}</div>
+                            @enderror
+                        </div>
 
                         <div class="form-text">
                             Chọn ảnh mới nếu muốn thay ảnh hiện tại.

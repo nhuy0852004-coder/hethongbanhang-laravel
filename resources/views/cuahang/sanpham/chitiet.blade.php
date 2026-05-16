@@ -73,15 +73,33 @@
                         </p>
                     @endif
 
-                    <div class="mt-4 d-flex gap-2">
-                        <button class="btn btn-primary px-4 py-2" disabled>
-                            <i class="bi bi-cart-plus me-1"></i>
-                            Thêm vào giỏ hàng
-                        </button>
+                    <div class="mt-4">
+                        @if ($sanpham->so_luong_ton > 0)
+                            <form action="{{ route('cuahang.giohang.them', $sanpham) }}" method="POST" class="d-flex gap-2 flex-wrap">
+                                @csrf
 
-                        <a href="{{ route('cuahang.sanpham.index') }}" class="btn btn-light border px-4 py-2">
-                            Tiếp tục mua sắm
-                        </a>
+                                <input type="number"
+                                       name="so_luong"
+                                       value="1"
+                                       min="1"
+                                       max="{{ $sanpham->so_luong_ton }}"
+                                       class="form-control"
+                                       style="width: 110px;">
+
+                                <button type="submit" class="btn btn-primary px-4 py-2">
+                                    <i class="bi bi-cart-plus me-1"></i>
+                                    Thêm vào giỏ hàng
+                                </button>
+
+                                <a href="{{ route('cuahang.sanpham.index') }}" class="btn btn-light border px-4 py-2">
+                                    Tiếp tục mua sắm
+                                </a>
+                            </form>
+                        @else
+                            <button class="btn btn-light border px-4 py-2" disabled>
+                                Sản phẩm đã hết hàng
+                            </button>
+                        @endif
                     </div>
 
                     <div class="cuahang-ghichu mt-4">

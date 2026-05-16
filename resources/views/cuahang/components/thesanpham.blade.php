@@ -33,10 +33,15 @@
 
         <div class="mt-3">
             @if ($sanpham->so_luong_ton > 0)
-                <button class="btn btn-outline-primary w-100" disabled>
-                    <i class="bi bi-cart-plus me-1"></i>
-                    Thêm vào giỏ
-                </button>
+                <form action="{{ route('cuahang.giohang.them', $sanpham) }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="so_luong" value="1">
+
+                    <button type="submit" class="btn btn-outline-primary w-100">
+                        <i class="bi bi-cart-plus me-1"></i>
+                        Thêm vào giỏ
+                    </button>
+                </form>
             @else
                 <button class="btn btn-light border w-100" disabled>
                     Hết hàng

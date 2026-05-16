@@ -13,3 +13,10 @@ if (! function_exists('dinh_dang_so_luong')) {
         return number_format((int) $so_luong, 0, ',', '.');
     }
 }
+
+if (! function_exists('dem_gio_hang')) {
+    function dem_gio_hang(): int
+    {
+        return collect(session('giohang', []))->sum('so_luong');
+    }
+}

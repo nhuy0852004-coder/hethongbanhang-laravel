@@ -269,6 +269,11 @@
                     const file = this.files[0];
                     const previewId = this.dataset.preview || 'xemTruocAnhSanpham';
                     const khungXemAnh = document.getElementById(previewId);
+                    const tenFile = this.closest('.nhom-upload-file')?.querySelector('.ten-file-upload');
+
+                    if (tenFile) {
+                        tenFile.textContent = file ? file.name : 'Chưa chọn tệp';
+                    }
 
                     if (!khungXemAnh) {
                         return;

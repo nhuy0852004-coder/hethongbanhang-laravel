@@ -67,6 +67,11 @@ return [
             'model' => App\Models\Nguoidung::class,
         ],
 
+        'nguoidung' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Nguoidung::class,
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

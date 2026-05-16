@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Xacthuc;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class DangnhapController extends Controller
 {
@@ -28,29 +29,30 @@ class DangnhapController extends Controller
             ]
         );
 
-        $thongtin = [
+        $nguoidung = Auth::getProvider()->retrieveByCredentials([
             'email' => $request->email,
-            'password' => $request->mat_khau,
-            'trang_thai' => 'hoat_dong',
-        ];
+        ]);
 
-        if (Auth::attempt($thongtin, $request->boolean('ghi_nho'))) {
-            $request->session()->regenerate();
-
-            if (Auth::user()->vai_tro !== 'quan_tri') {
-                Auth::logout();
-
-                return back()->with('loi', 'Tài khoản này không có quyền truy cập trang quản trị.');
-            }
-
-            return redirect()
-                ->route('quantri.bangdieukhien')
-                ->with('thanhcong', 'Đăng nhập thành công.');
+        if (! $nguoidung || ! Hash::check($request->mat_khau, $nguoidung->getAuthPassword())) {
+            return back()
+                ->withInput($request->only('email'))
+                ->with('loi', 'Email hoặc mật khẩu không chính xác.');
         }
 
-        return back()
-            ->withInput($request->only('email'))
-            ->with('loi', 'Email hoặc mật khẩu không chính xác.');
+        if ($nguoidung->trang_thai !== 'hoat_dong') {
+            return back()->with('loi', 'Tài khoản này đang bị khóa.');
+        }
+
+        if ($nguoidung->vai_tro !== 'quan_tri') {
+            return back()->with('loi', 'Tài khoản này không có quyền truy cập trang quản trị.');
+        }
+
+        Auth::login($nguoidung, $request->boolean('ghi_nho'));
+        $request->session()->regenerate();
+
+        return redirect()
+            ->route('quantri.bangdieukhien')
+            ->with('thanhcong', 'Đăng nhập thành công.');
     }
 
     public function dangxuat(Request $request)

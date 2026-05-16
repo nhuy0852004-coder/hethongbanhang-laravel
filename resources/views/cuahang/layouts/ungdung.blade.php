@@ -24,6 +24,10 @@
                     Sản phẩm
                 </a>
 
+                <a href="{{ route('cuahang.giohang.index') }}" class="{{ request()->routeIs('cuahang.giohang.*') ? 'active' : '' }}">
+                    Giỏ hàng
+                </a>
+
                 <a href="#">
                     Khuyến mãi
                 </a>
@@ -38,9 +42,15 @@
                     Quản trị
                 </a>
 
-                <a href="#" class="btn btn-primary">
+                <a href="{{ route('cuahang.giohang.index') }}" class="btn btn-primary position-relative">
                     <i class="bi bi-cart3 me-1"></i>
                     Giỏ hàng
+
+                    @if (dem_gio_hang() > 0)
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{ dinh_dang_so_luong(dem_gio_hang()) }}
+                        </span>
+                    @endif
                 </a>
             </div>
         </div>

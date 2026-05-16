@@ -7,6 +7,8 @@ use App\Http\Controllers\Quantri\SanphamController;
 use App\Http\Controllers\Xacthuc\DangnhapController;
 use App\Http\Controllers\Cuahang\TrangchuController as CuahangTrangchuController;
 use App\Http\Controllers\Cuahang\SanphamController as CuahangSanphamController;
+use App\Http\Controllers\Cuahang\GiohangController;
+use App\Http\Controllers\Cuahang\ThanhtoanController;
 
 Route::get('/', [CuahangTrangchuController::class, 'index'])->name('trangchu');
 
@@ -15,6 +17,30 @@ Route::get('/san-pham', [CuahangSanphamController::class, 'index'])
 
 Route::get('/san-pham/{duongDan}', [CuahangSanphamController::class, 'show'])
     ->name('cuahang.sanpham.show');
+
+Route::get('/gio-hang', [GiohangController::class, 'index'])
+    ->name('cuahang.giohang.index');
+
+Route::post('/gio-hang/them/{sanpham}', [GiohangController::class, 'them'])
+    ->name('cuahang.giohang.them');
+
+Route::patch('/gio-hang/cap-nhat', [GiohangController::class, 'capnhat'])
+    ->name('cuahang.giohang.capnhat');
+
+Route::delete('/gio-hang/xoa/{sanphamId}', [GiohangController::class, 'xoa'])
+    ->name('cuahang.giohang.xoa');
+
+Route::delete('/gio-hang/xoa-tat-ca', [GiohangController::class, 'xoatatca'])
+    ->name('cuahang.giohang.xoatatca');
+
+Route::get('/thanh-toan', [ThanhtoanController::class, 'index'])
+    ->name('cuahang.thanhtoan.index');
+
+Route::post('/thanh-toan/dat-hang', [ThanhtoanController::class, 'dathang'])
+    ->name('cuahang.thanhtoan.dathang');
+
+Route::get('/thanh-toan/thanh-cong/{maDonHang}', [ThanhtoanController::class, 'thanhcong'])
+    ->name('cuahang.thanhtoan.thanhcong');
 
 Route::middleware('guest')->group(function () {
     Route::get('/dang-nhap', [DangnhapController::class, 'index'])->name('dangnhap');
