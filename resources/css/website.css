@@ -1,88 +1,348 @@
-.website-body {
+.cuahang-body {
     background: #FFFFFF;
     color: #111827;
     font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    font-size: 14px;
 }
 
-.website-header {
+.cuahang-header {
     height: 72px;
     border-bottom: 1px solid #E5E7EB;
     background: #FFFFFF;
     display: flex;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
 }
 
-.website-logo {
+.cuahang-logo {
     color: #2563EB;
     font-size: 22px;
     font-weight: 800;
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
 }
 
-.website-nav a {
+.cuahang-nav a {
     color: #374151;
     text-decoration: none;
-    font-weight: 500;
-    margin-left: 24px;
+    font-weight: 600;
+    margin-left: 28px;
 }
 
-.website-nav a:hover {
+.cuahang-nav a:hover,
+.cuahang-nav a.active {
     color: #2563EB;
 }
 
-.website-hero {
+.cuahang-hero {
     background: #F8FAFC;
     border-radius: 18px;
     padding: 56px;
     border: 1px solid #E5E7EB;
 }
 
-.website-hero h1 {
+.cuahang-hero h1 {
     font-size: 42px;
+    line-height: 1.15;
     font-weight: 800;
     color: #111827;
+    max-width: 680px;
 }
 
-.website-hero p {
+.cuahang-hero p {
     font-size: 16px;
     color: #6B7280;
-    max-width: 560px;
+    max-width: 600px;
 }
 
-.the-sanpham {
-    border: 1px solid #E5E7EB;
-    border-radius: 12px;
+.cuahang-hero-card {
     background: #FFFFFF;
-    overflow: hidden;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.hero-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: #EFF6FF;
+    color: #2563EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.cuahang-section-title {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.cuahang-section-title h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.cuahang-section-title p {
+    color: #6B7280;
+    margin: 4px 0 0;
+}
+
+.cuahang-section-title a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.the-danhmuc-cuahang {
+    display: block;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    padding: 18px 12px;
+    text-align: center;
+    text-decoration: none;
+    color: #111827;
     transition: 0.15s ease;
 }
 
-.the-sanpham:hover {
-    border-color: #CBD5E1;
+.the-danhmuc-cuahang:hover {
+    border-color: #2563EB;
+    background: #F8FAFC;
 }
 
-.the-sanpham-img {
-    height: 220px;
-    background: #F3F4F6;
+.the-danhmuc-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: #EFF6FF;
+    color: #2563EB;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.the-sanpham-cuahang {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: 0.15s ease;
+    height: 100%;
+}
+
+.the-sanpham-cuahang:hover {
+    border-color: #CBD5E1;
+    transform: translateY(-2px);
+}
+
+.the-sanpham-anh {
+    height: 250px;
+    background: #F8FAFC;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.the-sanpham-anh img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.the-sanpham-anh-rong {
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #9CA3AF;
+    font-size: 42px;
 }
 
-.the-sanpham-body {
+.nhan-khuyen-mai {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #FEE2E2;
+    color: #991B1B;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.the-sanpham-noidung {
     padding: 14px;
 }
 
-.the-sanpham-title {
+.the-sanpham-ten {
+    display: block;
+    text-decoration: none;
+    color: #111827;
     font-size: 15px;
     font-weight: 700;
-    color: #111827;
-    margin-bottom: 6px;
+    line-height: 1.4;
+    min-height: 42px;
 }
 
-.the-sanpham-price {
+.the-sanpham-ten:hover {
+    color: #2563EB;
+}
+
+.gia-khuyen-mai {
     color: #DC2626;
     font-weight: 800;
-    font-size: 16px;
+    font-size: 17px;
+}
+
+.gia-goc {
+    color: #9CA3AF;
+    text-decoration: line-through;
+    margin-left: 6px;
+    font-size: 13px;
+}
+
+.cuahang-page-title {
+    margin-bottom: 24px;
+}
+
+.cuahang-page-title h1 {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.cuahang-page-title p {
+    color: #6B7280;
+    margin-bottom: 0;
+}
+
+.boloc-cuahang {
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    padding: 18px;
+    background: #FFFFFF;
+    position: sticky;
+    top: 92px;
+}
+
+.trang-rong-cuahang {
+    border: 1px dashed #CBD5E1;
+    border-radius: 14px;
+    background: #F8FAFC;
+    padding: 48px 20px;
+    text-align: center;
+    color: #6B7280;
+}
+
+.chitiet-sanpham {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.chitiet-sanpham-anh {
+    height: 520px;
+    background: #F8FAFC;
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.chitiet-sanpham-anh img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.chitiet-sanpham-anh-rong {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 56px;
+    color: #9CA3AF;
+}
+
+.chitiet-sanpham-ten {
+    font-size: 32px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.chitiet-gia-khuyen-mai {
+    color: #DC2626;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.chitiet-gia-goc {
+    color: #9CA3AF;
+    text-decoration: line-through;
+    margin-top: 4px;
+}
+
+.cuahang-ghichu {
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 14px;
+    background: #F8FAFC;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.khoi-mota-sanpham {
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 24px;
+    background: #FFFFFF;
+}
+
+.khoi-mota-sanpham h2 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.cuahang-footer {
+    border-top: 1px solid #E5E7EB;
+    padding: 36px 0;
+    background: #F8FAFC;
+}
+
+.cuahang-footer a {
+    color: #374151;
+    text-decoration: none;
+}
+
+.cuahang-footer a:hover {
+    color: #2563EB;
+}
+
+@media (max-width: 768px) {
+    .cuahang-hero {
+        padding: 32px 20px;
+    }
+
+    .cuahang-hero h1 {
+        font-size: 30px;
+    }
+
+    .the-sanpham-anh {
+        height: 220px;
+    }
+
+    .chitiet-sanpham-anh {
+        height: 360px;
+    }
 }

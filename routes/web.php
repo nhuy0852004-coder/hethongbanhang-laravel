@@ -4,10 +4,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Quantri\BangdieukhienController;
 use App\Http\Controllers\Quantri\DanhmucController;
 use App\Http\Controllers\Quantri\SanphamController;
-use App\Http\Controllers\Website\TrangchuController;
 use App\Http\Controllers\Xacthuc\DangnhapController;
+use App\Http\Controllers\Cuahang\TrangchuController as CuahangTrangchuController;
+use App\Http\Controllers\Cuahang\SanphamController as CuahangSanphamController;
 
-Route::get('/', [TrangchuController::class, 'index'])->name('trangchu');
+Route::get('/', [CuahangTrangchuController::class, 'index'])->name('trangchu');
+
+Route::get('/san-pham', [CuahangSanphamController::class, 'index'])
+    ->name('cuahang.sanpham.index');
+
+Route::get('/san-pham/{duongDan}', [CuahangSanphamController::class, 'show'])
+    ->name('cuahang.sanpham.show');
 
 Route::middleware('guest')->group(function () {
     Route::get('/dang-nhap', [DangnhapController::class, 'index'])->name('dangnhap');
