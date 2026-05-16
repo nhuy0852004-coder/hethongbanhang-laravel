@@ -41,13 +41,67 @@ class SanphamService
         });
     }
 
-    protected function taoDuongDanDuyNhat(string $tenSanPham): string
+    public function capnhat(Sanpham $sanpham, array $duLieu): bool
+    {
+        return DB::transaction(function () use ($sanpham, $duLieu) {
+            if (empty($duLieu['ma_san_pham'])) {
+                $duLieu['ma_san_pham'] = $sanpham->ma_san_pham;
+            }
+
+            $duLieu['duong_dan'] = $this->taoDuongDanDuyNhat(
+                $duLieu['ten_san_pham'],
+                $sanpham->id
+            );
+
+            if (isset($duLieu['anh_dai_dien'])) {
+                if ($sanpham->anh_dai_dien && Storage::disk('public')->exists($sanpham->anh_dai_dien)) {
+                    Storage::disk('public')->delete($sanpham->anh_dai_dien);
+                }
+
+                $duLieu['anh_dai_dien'] = $duLieu['anh_dai_dien']->store('sanpham', 'public');
+            }
+
+            if ((int) $duLieu['so_luong_ton'] === 0) {
+                $duLieu['trang_thai'] = 'het_hang';
+            }
+
+            return $this->sanphamRepository->capnhat($sanpham, $duLieu);
+        });
+    }
+
+    public function xoa(Sanpham $sanpham): bool
+    {
+        return DB::transaction(function () use ($sanpham) {
+            if ($sanpham->anh_dai_dien && Storage::disk('public')->exists($sanpham->anh_dai_dien)) {
+                Storage::disk('public')->delete($sanpham->anh_dai_dien);
+            }
+
+            return $this->sanphamRepository->xoa($sanpham);
+        });
+    }
+
+    public function doiTrangThai(Sanpham $sanpham): bool
+    {
+        if ($sanpham->so_luong_ton <= 0) {
+            return $this->sanphamRepository->capnhat($sanpham, [
+                'trang_thai' => 'het_hang',
+            ]);
+        }
+
+        $trangThaiMoi = $sanpham->trang_thai === 'hien_thi' ? 'an' : 'hien_thi';
+
+        return $this->sanphamRepository->capnhat($sanpham, [
+            'trang_thai' => $trangThaiMoi,
+        ]);
+    }
+
+    protected function taoDuongDanDuyNhat(string $tenSanPham, ?int $boQuaId = null): string
     {
         $duongDanGoc = Str::slug($tenSanPham);
         $duongDan = $duongDanGoc;
         $soThuTu = 1;
 
-        while ($this->sanphamRepository->tonTaiDuongDan($duongDan)) {
+        while ($this->sanphamRepository->tonTaiDuongDan($duongDan, $boQuaId)) {
             $duongDan = $duongDanGoc . '-' . $soThuTu;
             $soThuTu++;
         }

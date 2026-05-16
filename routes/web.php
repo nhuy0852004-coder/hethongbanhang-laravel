@@ -27,7 +27,11 @@ Route::prefix('quantri')
             ->name('danhmuc.doi-trang-thai');
 
         Route::resource('sanpham', SanphamController::class)->only([
-            'index', 
+            'index',
             'store',
+            'update',
+            'destroy',
         ]);
+        Route::patch('sanpham/{sanpham}/doi-trang-thai', [SanphamController::class, 'doiTrangThai'])
+            ->name('sanpham.doi-trang-thai');
     });

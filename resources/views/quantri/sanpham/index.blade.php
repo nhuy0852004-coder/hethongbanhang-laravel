@@ -176,16 +176,46 @@
 
                                         <ul class="dropdown-menu dropdown-menu-end shadow-sm border">
                                             <li>
-                                                <button class="dropdown-item" disabled>
+                                                <button type="button"
+                                                        class="dropdown-item"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#modalSuaSanpham{{ $sanpham->id }}">
                                                     <i class="bi bi-pencil-square me-2"></i>
-                                                    Sửa ở ngày 5
+                                                    Sửa sản phẩm
                                                 </button>
                                             </li>
+
                                             <li>
-                                                <button class="dropdown-item text-danger" disabled>
-                                                    <i class="bi bi-trash me-2"></i>
-                                                    Xóa ở ngày 5
-                                                </button>
+                                                <form action="{{ route('quantri.sanpham.doi-trang-thai', $sanpham) }}" method="POST">
+                                                    @csrf
+                                                    @method('PATCH')
+
+                                                    <button type="submit" class="dropdown-item">
+                                                        @if ($sanpham->trang_thai === 'hien_thi')
+                                                            <i class="bi bi-eye-slash me-2"></i>
+                                                            Ẩn sản phẩm
+                                                        @else
+                                                            <i class="bi bi-eye me-2"></i>
+                                                            Bật hiển thị
+                                                        @endif
+                                                    </button>
+                                                </form>
+                                            </li>
+
+                                            <li><hr class="dropdown-divider"></li>
+
+                                            <li>
+                                                <form action="{{ route('quantri.sanpham.destroy', $sanpham) }}"
+                                                      method="POST"
+                                                      onsubmit="return confirm('Bạn có chắc muốn xóa sản phẩm này không?')">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button type="submit" class="dropdown-item text-danger">
+                                                        <i class="bi bi-trash me-2"></i>
+                                                        Xóa sản phẩm
+                                                    </button>
+                                                </form>
                                             </li>
                                         </ul>
                                     </div>
@@ -199,6 +229,13 @@
             <div class="mt-3">
                 {{ $danhsachSanpham->links() }}
             </div>
+
+            @foreach ($danhsachSanpham as $sanpham)
+                @include('quantri.sanpham.hopthoaisua', [
+                    'sanpham' => $sanpham,
+                    'danhsachDanhmuc' => $danhsachDanhmuc
+                ])
+            @endforeach
         @else
             <div class="trang-rong">
                 <div class="trang-rong-icon">
@@ -224,13 +261,18 @@
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const inputAnh = document.getElementById('anh_dai_dien');
-            const khungXemAnh = document.getElementById('xemTruocAnhSanpham');
+            const cacInputAnh = document.querySelectorAll('.input-anh-sanpham, #anh_dai_dien');
             const cacInputTien = document.querySelectorAll('.nhap-tien-vnd');
 
-            if (inputAnh && khungXemAnh) {
-                inputAnh.addEventListener('change', function () {
+            cacInputAnh.forEach(function (input) {
+                input.addEventListener('change', function () {
                     const file = this.files[0];
+                    const previewId = this.dataset.preview || 'xemTruocAnhSanpham';
+                    const khungXemAnh = document.getElementById(previewId);
+
+                    if (!khungXemAnh) {
+                        return;
+                    }
 
                     if (!file) {
                         khungXemAnh.innerHTML = '<i class="bi bi-image text-muted fs-1"></i>';
@@ -245,7 +287,7 @@
 
                     reader.readAsDataURL(file);
                 });
-            }
+            });
 
             cacInputTien.forEach(function (input) {
                 input.addEventListener('input', function () {

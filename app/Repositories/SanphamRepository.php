@@ -32,10 +32,23 @@ class SanphamRepository
         return Sanpham::create($duLieu);
     }
 
-    public function tonTaiDuongDan(string $duongDan): bool
+    public function capnhat(Sanpham $sanpham, array $duLieu): bool
+    {
+        return $sanpham->update($duLieu);
+    }
+
+    public function xoa(Sanpham $sanpham): bool
+    {
+        return $sanpham->delete();
+    }
+
+    public function tonTaiDuongDan(string $duongDan, ?int $boQuaId = null): bool
     {
         return Sanpham::query()
             ->where('duong_dan', $duongDan)
+            ->when($boQuaId, function ($query) use ($boQuaId) {
+                $query->where('id', '!=', $boQuaId);
+            })
             ->exists();
     }
 
