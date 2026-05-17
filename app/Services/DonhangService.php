@@ -11,7 +11,8 @@ use RuntimeException;
 class DonhangService
 {
     public function __construct(
-        protected DonhangRepository $donhangRepository
+        protected DonhangRepository $donhangRepository,
+        protected ThongbaoService $thongbaoService
     ) {
     }
 
@@ -28,7 +29,7 @@ class DonhangService
             throw new RuntimeException('Giỏ hàng đang trống.');
         }
 
-        return DB::transaction(function () use ($duLieu, $gioHang) {
+        $donhang = DB::transaction(function () use ($duLieu, $gioHang) {
             $tongTienHang = 0;
             $danhsachChitiet = [];
 
@@ -115,6 +116,10 @@ class DonhangService
 
             return $donhang;
         });
+
+        $this->thongbaoService->taoThongbaoDonhangMoi($donhang);
+
+        return $donhang;
     }
 
     public function capnhatTrangThai(Donhang $donhang, string $trangThaiMoi): bool

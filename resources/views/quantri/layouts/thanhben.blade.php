@@ -40,7 +40,8 @@
 
         <div class="quantri-menu-title">Vận hành</div>
 
-        <a href="#" class="quantri-menu-link">
+        <a href="{{ route('quantri.thongbao.index') }}"
+           class="quantri-menu-link {{ request()->routeIs('quantri.thongbao.*') ? 'active' : '' }}">
             <i class="bi bi-bell"></i>
             <span>Thông báo</span>
         </a>

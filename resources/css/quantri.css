@@ -620,3 +620,31 @@ body {
     font-size: 22px;
     font-weight: 800;
 }
+
+.thongbao-dropdown {
+    width: 360px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.thongbao-header-item {
+    display: block;
+    padding: 12px 14px;
+    color: #111827;
+    text-decoration: none;
+    border-bottom: 1px solid #F1F5F9;
+    background: #FFFFFF;
+}
+
+.thongbao-header-item:hover {
+    background: #F8FAFC;
+    color: #111827;
+}
+
+.thongbao-header-item.chua-doc {
+    background: #EFF6FF;
+}
+
+.thongbao-header-item.chua-doc:hover {
+    background: #DBEAFE;
+}
