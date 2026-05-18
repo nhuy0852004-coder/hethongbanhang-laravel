@@ -6,6 +6,7 @@ use App\Http\Controllers\Quantri\DanhmucController;
 use App\Http\Controllers\Quantri\SanphamController;
 use App\Http\Controllers\Quantri\DonhangController;
 use App\Http\Controllers\Quantri\ThongbaoController;
+use App\Http\Controllers\Quantri\BaocaoController;
 use App\Http\Controllers\Xacthuc\DangnhapController;
 use App\Http\Controllers\Cuahang\TrangchuController as CuahangTrangchuController;
 use App\Http\Controllers\Cuahang\SanphamController as CuahangSanphamController;
@@ -81,6 +82,9 @@ Route::prefix('quantri')
             'show',
             'update',
         ]);
+
+        Route::get('baocao/doanh-thu', [BaocaoController::class, 'doanhthu'])
+            ->name('baocao.doanhthu');
 
         Route::get('thongbao', [ThongbaoController::class, 'index'])
             ->name('thongbao.index');

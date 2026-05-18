@@ -46,7 +46,8 @@
             <span>Thông báo</span>
         </a>
 
-        <a href="#" class="quantri-menu-link">
+        <a href="{{ route('quantri.baocao.doanhthu') }}"
+           class="quantri-menu-link {{ request()->routeIs('quantri.baocao.*') ? 'active' : '' }}">
             <i class="bi bi-bar-chart"></i>
             <span>Báo cáo doanh thu</span>
         </a>

@@ -9,6 +9,9 @@ Alpine.start();
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
+import Chart from 'chart.js/auto';
+window.Chart = Chart;
+
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 

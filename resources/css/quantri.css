@@ -648,3 +648,37 @@ body {
 .thongbao-header-item.chua-doc:hover {
     background: #DBEAFE;
 }
+
+.dashboard-list-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+.dashboard-list-item:last-child {
+    border-bottom: 0;
+}
+
+.top-sanpham-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+.top-sanpham-item:last-child {
+    border-bottom: 0;
+}
+
+.top-sanpham-rank {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: #EFF6FF;
+    color: #2563EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    flex-shrink: 0;
+}
