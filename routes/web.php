@@ -15,6 +15,7 @@ use App\Http\Controllers\Cuahang\SanphamController as CuahangSanphamController;
 use App\Http\Controllers\Cuahang\GiohangController;
 use App\Http\Controllers\Cuahang\ThanhtoanController;
 use App\Http\Controllers\Cuahang\DonhangController as CuahangDonhangController;
+use App\Http\Controllers\Cuahang\ThongtinController;
 
 Route::get('/', [CuahangTrangchuController::class, 'index'])->name('trangchu');
 Route::get('/tra-cuu-don-hang', [CuahangDonhangController::class, 'tracuu'])
@@ -52,6 +53,15 @@ Route::post('/thanh-toan/dat-hang', [ThanhtoanController::class, 'dathang'])
 
 Route::get('/thanh-toan/thanh-cong/{maDonHang}', [ThanhtoanController::class, 'thanhcong'])
     ->name('cuahang.thanhtoan.thanhcong');
+
+Route::get('/chinh-sach-van-chuyen', [ThongtinController::class, 'chinhSachVanChuyen'])
+    ->name('cuahang.thongtin.chinh-sach-van-chuyen');
+
+Route::get('/chinh-sach-doi-tra', [ThongtinController::class, 'chinhSachDoiTra'])
+    ->name('cuahang.thongtin.chinh-sach-doi-tra');
+
+Route::get('/lien-he', [ThongtinController::class, 'lienHe'])
+    ->name('cuahang.thongtin.lien-he');
 
 Route::middleware('guest')->group(function () {
     Route::get('/dang-nhap', [DangnhapController::class, 'index'])->name('dangnhap');

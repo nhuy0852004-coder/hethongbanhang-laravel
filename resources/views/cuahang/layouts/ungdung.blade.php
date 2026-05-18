@@ -8,6 +8,40 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="cuahang-body">
+    <div class="cuahang-topbar">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="cuahang-topbar-left">
+                <span>
+                    <i class="bi bi-telephone me-1"></i>
+                    {{ $caidatChung->so_dien_thoai ?? '0900 000 000' }}
+                </span>
+
+                <span class="d-none d-md-inline-flex">
+                    <i class="bi bi-envelope me-1"></i>
+                    {{ $caidatChung->email ?? 'hotro@banhangpro.vn' }}
+                </span>
+            </div>
+
+            <div class="cuahang-topbar-right">
+                <a href="{{ route('cuahang.donhang.tracuu') }}">
+                    Tra cứu đơn hàng
+                </a>
+
+                <span class="topbar-divider"></span>
+
+                <a href="{{ route('cuahang.thongtin.chinh-sach-van-chuyen') }}">
+                    Vận chuyển
+                </a>
+
+                <span class="topbar-divider d-none d-md-inline-block"></span>
+
+                <a href="{{ route('cuahang.thongtin.chinh-sach-doi-tra') }}" class="d-none d-md-inline-flex">
+                    Đổi trả
+                </a>
+            </div>
+        </div>
+    </div>
+
     <header class="cuahang-header">
         <div class="container d-flex align-items-center justify-content-between">
             <a href="{{ route('trangchu') }}" class="cuahang-logo">
@@ -43,7 +77,13 @@
                     Khuyến mãi
                 </a>
 
-                <a href="#">
+                <a href="{{ route('cuahang.thongtin.chinh-sach-van-chuyen') }}"
+                   class="{{ request()->routeIs('cuahang.thongtin.chinh-sach-van-chuyen') ? 'active' : '' }}">
+                    Vận chuyển
+                </a>
+
+                <a href="{{ route('cuahang.thongtin.lien-he') }}"
+                   class="{{ request()->routeIs('cuahang.thongtin.lien-he') ? 'active' : '' }}">
                     Liên hệ
                 </a>
             </nav>
@@ -85,11 +125,13 @@
                 </div>
 
                 <div class="col-lg-3">
-                    <div class="fw-semibold mb-2">Danh mục</div>
+                    <div class="fw-semibold mb-2">Hỗ trợ khách hàng</div>
                     <div class="d-flex flex-column gap-2">
                         <a href="{{ route('cuahang.sanpham.index') }}">Tất cả sản phẩm</a>
-                        <a href="#">Sản phẩm mới</a>
-                        <a href="#">Khuyến mãi</a>
+                        <a href="{{ route('cuahang.donhang.tracuu') }}">Tra cứu đơn hàng</a>
+                        <a href="{{ route('cuahang.thongtin.chinh-sach-van-chuyen') }}">Chính sách vận chuyển</a>
+                        <a href="{{ route('cuahang.thongtin.chinh-sach-doi-tra') }}">Chính sách đổi trả</a>
+                        <a href="{{ route('cuahang.thongtin.lien-he') }}">Liên hệ</a>
                     </div>
                 </div>
 

@@ -471,3 +471,175 @@
     background: #FFFFFF;
     padding: 20px;
 }
+
+.trang-thongtin-hero {
+    border: 1px solid #E5E7EB;
+    border-radius: 18px;
+    background: #F8FAFC;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.trang-thongtin-hero h1 {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: #111827;
+}
+
+.trang-thongtin-hero p {
+    color: #6B7280;
+    margin-bottom: 0;
+    max-width: 720px;
+}
+
+.trang-thongtin-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: #EFF6FF;
+    color: #2563EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    flex-shrink: 0;
+}
+
+.trang-thongtin-card {
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    background: #FFFFFF;
+    padding: 24px;
+    height: 100%;
+}
+
+.trang-thongtin-card h2 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: #111827;
+}
+
+.noi-dung-chinh-sach {
+    color: #374151;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.thongtin-lienhe-item {
+    display: flex;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+.thongtin-lienhe-item:last-child {
+    border-bottom: 0;
+}
+
+.thongtin-lienhe-item i {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #EFF6FF;
+    color: #2563EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.the-hotro-nhanh {
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    text-decoration: none;
+    color: #111827;
+    height: 100%;
+    transition: 0.15s ease;
+}
+
+.the-hotro-nhanh:hover {
+    border-color: #2563EB;
+    background: #F8FAFC;
+    color: #111827;
+}
+
+.the-hotro-nhanh i {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #EFF6FF;
+    color: #2563EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .trang-thongtin-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+    }
+
+    .trang-thongtin-hero h1 {
+        font-size: 26px;
+    }
+}
+
+.cuahang-topbar {
+    height: 36px;
+    background: #F8FAFC;
+    border-bottom: 1px solid #E5E7EB;
+    color: #6B7280;
+    font-size: 13px;
+}
+
+.cuahang-topbar .container {
+    height: 100%;
+}
+
+.cuahang-topbar-left,
+.cuahang-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.cuahang-topbar-left span {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.cuahang-topbar a {
+    color: #6B7280;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+}
+
+.cuahang-topbar a:hover {
+    color: #2563EB;
+}
+
+.topbar-divider {
+    width: 1px;
+    height: 14px;
+    background: #D1D5DB;
+    display: inline-block;
+}
+
+.cuahang-header {
+    top: 0;
+}
