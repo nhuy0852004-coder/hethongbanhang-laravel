@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Caidat;
 use App\Services\ThongbaoService;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
@@ -25,6 +26,13 @@ class AppServiceProvider extends ServiceProvider
                 'soLuongThongbaoChuaDoc' => $thongbaoService->demChuaDoc(),
                 'danhsachThongbaoHeader' => $thongbaoService->layThongbaoMoiNhat(),
             ]);
+        });
+
+        View::composer([
+            'quantri.layouts.thanhben',
+            'cuahang.layouts.ungdung',
+        ], function ($view) {
+            $view->with('caidatChung', Caidat::query()->first());
         });
     }
 }

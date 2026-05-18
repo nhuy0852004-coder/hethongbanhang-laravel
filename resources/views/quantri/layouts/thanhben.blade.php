@@ -1,7 +1,14 @@
 <aside class="quantri-sidebar">
     <div class="quantri-logo">
-        <i class="bi bi-shop me-2"></i>
-        Bán Hàng Pro
+        @if (!empty($caidatChung?->logo))
+            <img src="{{ asset('storage/' . $caidatChung->logo) }}"
+                 alt="{{ $caidatChung->ten_cua_hang }}"
+                 style="width: 30px; height: 30px; object-fit: contain; margin-right: 8px;">
+        @else
+            <i class="bi bi-shop me-2"></i>
+        @endif
+
+        <span>{{ $caidatChung->ten_cua_hang ?? 'Bán Hàng Pro' }}</span>
     </div>
 
     <nav class="quantri-menu">
@@ -53,7 +60,8 @@
             <span>Báo cáo doanh thu</span>
         </a>
 
-        <a href="#" class="quantri-menu-link">
+        <a href="{{ route('quantri.caidat.index') }}"
+           class="quantri-menu-link {{ request()->routeIs('quantri.caidat.*') ? 'active' : '' }}">
             <i class="bi bi-gear"></i>
             <span>Cài đặt cửa hàng</span>
         </a>

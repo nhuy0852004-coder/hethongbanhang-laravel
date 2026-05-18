@@ -11,8 +11,15 @@
     <header class="cuahang-header">
         <div class="container d-flex align-items-center justify-content-between">
             <a href="{{ route('trangchu') }}" class="cuahang-logo">
-                <i class="bi bi-shop me-2"></i>
-                Bán Hàng Pro
+                @if (!empty($caidatChung?->logo))
+                    <img src="{{ asset('storage/' . $caidatChung->logo) }}"
+                         alt="{{ $caidatChung->ten_cua_hang }}"
+                         style="width: 34px; height: 34px; object-fit: contain; margin-right: 8px;">
+                @else
+                    <i class="bi bi-shop me-2"></i>
+                @endif
+
+                {{ $caidatChung->ten_cua_hang ?? 'Bán Hàng Pro' }}
             </a>
 
             <nav class="cuahang-nav d-none d-lg-flex align-items-center">
@@ -68,7 +75,9 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-5">
-                    <div class="fw-bold fs-5 mb-2">Bán Hàng Pro</div>
+                    <div class="fw-bold fs-5 mb-2">
+                        {{ $caidatChung->ten_cua_hang ?? 'Bán Hàng Pro' }}
+                    </div>
                     <p class="text-muted mb-0">
                         Cửa hàng trực tuyến chuyên nghiệp, sản phẩm rõ ràng,
                         giá Việt Nam Đồng và trải nghiệm mua hàng dễ sử dụng.
@@ -86,9 +95,15 @@
 
                 <div class="col-lg-4">
                     <div class="fw-semibold mb-2">Liên hệ</div>
-                    <div class="text-muted">Số điện thoại: 0900 000 000</div>
-                    <div class="text-muted">Email: hotro@banhangpro.vn</div>
-                    <div class="text-muted">Địa chỉ: Việt Nam</div>
+                    <div class="text-muted">
+                        Số điện thoại: {{ $caidatChung->so_dien_thoai ?? 'Đang cập nhật' }}
+                    </div>
+                    <div class="text-muted">
+                        Email: {{ $caidatChung->email ?? 'Đang cập nhật' }}
+                    </div>
+                    <div class="text-muted">
+                        Địa chỉ: {{ $caidatChung->dia_chi ?? 'Đang cập nhật' }}
+                    </div>
                 </div>
             </div>
         </div>
