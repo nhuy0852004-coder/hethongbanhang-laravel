@@ -33,7 +33,8 @@
             <span>Đơn hàng</span>
         </a>
 
-        <a href="#" class="quantri-menu-link">
+        <a href="{{ route('quantri.khachhang.index') }}"
+           class="quantri-menu-link {{ request()->routeIs('quantri.khachhang.*') ? 'active' : '' }}">
             <i class="bi bi-people"></i>
             <span>Khách hàng</span>
         </a>

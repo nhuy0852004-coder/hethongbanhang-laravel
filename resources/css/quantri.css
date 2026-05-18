@@ -682,3 +682,35 @@ body {
     font-weight: 800;
     flex-shrink: 0;
 }
+
+.avatar-khachhang {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    background: #EFF6FF;
+    color: #2563EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.avatar-khachhang-large {
+    width: 82px;
+    height: 82px;
+    font-size: 32px;
+}
+
+.thongtin-khachhang-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.thongtin-khachhang-item {
+    border: 1px solid #E5E7EB;
+    border-radius: 10px;
+    background: #F8FAFC;
+    padding: 12px 14px;
+}
