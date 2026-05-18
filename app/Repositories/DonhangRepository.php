@@ -80,4 +80,21 @@ class DonhangRepository
             ->where('ma_don_hang', $maDonHang)
             ->firstOrFail();
     }
+
+    public function layTheoMaVaSoDienThoai(string $maDonHang, string $soDienThoai): ?Donhang
+    {
+        return Donhang::query()
+            ->with('chitietdonhang')
+            ->where('ma_don_hang', $maDonHang)
+            ->where('so_dien_thoai', $soDienThoai)
+            ->first();
+    }
+
+    public function layChiTietTheoMa(string $maDonHang): Donhang
+    {
+        return Donhang::query()
+            ->with('chitietdonhang')
+            ->where('ma_don_hang', $maDonHang)
+            ->firstOrFail();
+    }
 }

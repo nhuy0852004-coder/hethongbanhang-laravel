@@ -11,10 +11,10 @@ class NguoidungSeeder extends Seeder
     public function run(): void
     {
         Nguoidung::updateOrCreate(
-            ['email' => 'admin@gmail.com'],
+            ['email' => 'nhuy08052004@gmail.com'],
             [
-                'ho_ten' => 'Quản trị viên',
-                'so_dien_thoai' => '0900000000',
+                'ho_ten' => 'Nhuy',
+                'so_dien_thoai' => null,
                 'mat_khau' => Hash::make('12345678'),
                 'vai_tro' => 'quan_tri',
                 'trang_thai' => 'hoat_dong',

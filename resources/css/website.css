@@ -435,4 +435,39 @@
     background: #FFFFFF;
     padding: 20px;
     text-align: left;
+}.tracuu-wrapper {
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.tracuu-wrapper h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.tracuu-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: #EFF6FF;
+    color: #2563EB;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+}
+
+.tracuu-card {
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    background: #FFFFFF;
+    padding: 24px;
+}
+
+.donhang-khach-card {
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    background: #FFFFFF;
+    padding: 20px;
 }

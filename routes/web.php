@@ -11,8 +11,14 @@ use App\Http\Controllers\Cuahang\TrangchuController as CuahangTrangchuController
 use App\Http\Controllers\Cuahang\SanphamController as CuahangSanphamController;
 use App\Http\Controllers\Cuahang\GiohangController;
 use App\Http\Controllers\Cuahang\ThanhtoanController;
+use App\Http\Controllers\Cuahang\DonhangController as CuahangDonhangController;
 
 Route::get('/', [CuahangTrangchuController::class, 'index'])->name('trangchu');
+Route::get('/tra-cuu-don-hang', [CuahangDonhangController::class, 'tracuu'])
+    ->name('cuahang.donhang.tracuu');
+
+Route::post('/tra-cuu-don-hang', [CuahangDonhangController::class, 'xulyTracuu'])
+    ->name('cuahang.donhang.xuly-tracuu');
 
 Route::get('/san-pham', [CuahangSanphamController::class, 'index'])
     ->name('cuahang.sanpham.index');

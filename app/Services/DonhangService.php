@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\CapnhatTrangthaiDonhangEvent;
 use App\Models\Donhang;
 use App\Models\Sanpham;
 use App\Repositories\DonhangRepository;
@@ -122,9 +123,14 @@ class DonhangService
         return $donhang;
     }
 
+    public function traCuuDonHang(string $maDonHang, string $soDienThoai): ?Donhang
+    {
+        return $this->donhangRepository->layTheoMaVaSoDienThoai($maDonHang, $soDienThoai);
+    }
+
     public function capnhatTrangThai(Donhang $donhang, string $trangThaiMoi): bool
     {
-        return DB::transaction(function () use ($donhang, $trangThaiMoi) {
+        $ketQua = DB::transaction(function () use ($donhang, $trangThaiMoi) {
             if ($donhang->trang_thai === 'hoan_thanh' && $trangThaiMoi === 'da_huy') {
                 throw new RuntimeException('Không thể hủy đơn hàng đã hoàn thành.');
             }
@@ -137,6 +143,21 @@ class DonhangService
                 'trang_thai' => $trangThaiMoi,
             ]);
         });
+
+        $donhang->refresh();
+
+        event(new CapnhatTrangthaiDonhangEvent(
+            $donhang->ma_don_hang,
+            [
+                'ma_don_hang' => $donhang->ma_don_hang,
+                'trang_thai' => $donhang->trang_thai,
+                'ten_trang_thai' => ten_trang_thai_don_hang($donhang->trang_thai),
+                'class_trang_thai' => class_trang_thai_don_hang($donhang->trang_thai),
+                'thoi_gian' => dinh_dang_ngay_gio(now()),
+            ]
+        ));
+
+        return $ketQua;
     }
 
     public function layTheoMaDonHang(string $maDonHang): Donhang

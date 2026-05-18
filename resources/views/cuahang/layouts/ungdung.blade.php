@@ -24,6 +24,10 @@
                     Sản phẩm
                 </a>
 
+                <a href="{{ route('cuahang.donhang.tracuu') }}" class="{{ request()->routeIs('cuahang.donhang.*') ? 'active' : '' }}">
+                    Tra cứu đơn hàng
+                </a>
+
                 <a href="{{ route('cuahang.giohang.index') }}" class="{{ request()->routeIs('cuahang.giohang.*') ? 'active' : '' }}">
                     Giỏ hàng
                 </a>
